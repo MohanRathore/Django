@@ -3,4 +3,13 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return HttpResponse("Hello World")
+    context = {
+        "name": "mohan"
+    }
+    return render(request, 'home.html',context)
+
+def add(request):
+    val1 = int(request.GET['num1'])
+    val2 = int(request.GET['num2'])
+    result = val1 +val2
+    return render(request, 'result.html',{"res":result})
